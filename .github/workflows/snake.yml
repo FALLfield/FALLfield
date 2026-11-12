@@ -1,0 +1,49 @@
+name: Generate contribution snake
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+# Least privilege at the top level; the single job opts into contents: write.
+permissions: {}
+
+concurrency:
+  group: profile-snake
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write  # only to push the generated output branch
+    steps:
+      # Actions are pinned to full commit SHAs (with the tag in a comment) so the
+      # workflow is immutable and cannot be silently changed by a moving tag.
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Generate contribution snake
+        uses: Platane/snk/svg-only@d8f6715049803e982ee5ff501b6b9b7d5deeb09b # v3.5.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-contribution-grid-snake.svg?color_snake=#a14a22&color_dots=#f3f1ea,#c5ddd8,#7aa8a6,#2f6b66,#1a5f58
+            dist/github-contribution-grid-snake-dark.svg?color_snake=#e2a05a&color_dots=#0a1014,#17343c,#2a5c66,#4e9aa3,#9ed9ce
+
+      # Generated assets live on a dedicated `output` branch so the default
+      # branch stays clean and free of build artifacts.
+      - name: Publish to output branch
+        uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: output
+          user_name: github-actions[bot]
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          commit_message: "chore: update contribution snake"
+          force_orphan: true
+          allow_empty_commit: false
