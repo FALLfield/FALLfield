@@ -6,17 +6,15 @@
 
 > Complex problems usually have simple, wrong solutions.
 
-I am an MPhil student at The Hong Kong University of Science and Technology (Guangzhou). I completed my bachelor's degree at Macao Polytechnic University. I work on computer graphics and HCI, and I share selected projects as open source when I can.
+I am an MPhil student at The Hong Kong University of Science and Technology (Guangzhou). I completed my bachelor's degree at Macao Polytechnic University. I work on computer graphics, HCI, and digital art, and I am gradually building a public open-source practice.
 
-## Research
+## Interests
 
-Although I previously worked on digital humans, my current interests are sketch-based graphics and 3D reconstruction. I am still exploring this research story. I write occasional notes on the [personal site](https://fallfield.github.io/).
+I previously worked on digital humans. I remain interested in sketch editing and layering, and in sketch-based graphics and 3D reconstruction. I write occasional notes on the [personal site](https://fallfield.github.io/).
 
 ## Selected public work
 
-- [hci-paper-writing-skill](https://github.com/FALLfield/hci-paper-writing-skill) — an agent skill for planning, writing, and auditing HCI papers (MIT).
-- [FairyField](https://github.com/FALLfield/FairyField) — a desktop AI companion in Rust, Tauri, and Vue, with a 3D character. This is a source-level release candidate, not a finished product (MIT).
-- [dsh-update-all](https://github.com/FALLfield/dsh-update-all) — a plugin and CLI that updates a source install of DeepSeek Harness in one step (MIT).
+- [skills-collection](https://github.com/FALLfield/skills-collection) — agent skills for reference checking, video watching, thesis format checking, and LaTeX-to-Word conversion (MIT).
 - [Personal site](https://fallfield.github.io/) — notes on graphics, HCI, and digital art.
 
 ## Contact
